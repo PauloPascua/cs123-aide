@@ -1,0 +1,15 @@
+<div class="jumbotron text-center">
+	<h1>Welcome to Aide</h1>
+
+	<div ng-if="!main.loggedIn">
+		<p>Volunteering made easy.</p>
+		<a href="/login" class="btn btn-primary">Login</a>
+        <a href="/signup" class="btn btn-default">Signup</a>
+	</div>
+
+	<div ng-if="main.loggedIn">
+		<p>Manage your users.</p>
+		<a href="/users" class="btn btn-primary">View Users</a>
+		<a href="/events" class="btn btn-primary">View Events</a>
+	</div>
+</div>

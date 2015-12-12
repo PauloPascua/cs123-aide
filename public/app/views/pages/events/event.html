@@ -1,0 +1,51 @@
+<div class="page-header">
+	<h2> {{ event.eventData.name }} </h2> 
+</div>
+
+<h4> Owned by: {{event.eventData.owner}} </h4>
+<a href = "events/{{event.eventData._id}}/participants"> View Participants</a>
+
+<br>
+<br>
+
+<p> {{ event.eventData.description }} </p>
+
+<br>
+<br>
+
+<a href = "/events"> back to events </a>
+
+<form ng-submit="event.addParticipant()">
+	<button type="submit" class=".btn-default" ng>Join Event!</button>
+</form>
+
+<br>
+<br>
+
+<h5>Tags: </h5>
+
+<br>
+
+<p ng-repeat="tag in event.tagData"  style="float:left">#{{tag.tag}}&emsp;</p>
+
+<br>
+<br>
+
+<form class="form-horizontal" ng-submit="event.addTag()" ng-show="event.isOwner">
+		<p> Add Tag: </p>
+		<input type="text" class="form-control" ng-model ="event.tag">
+
+		<br>
+
+		<button type="submit" class=".btn-default" ng>Add Tag</button>
+</form>
+
+<br>
+
+<div class="row show-hide-message" ng-show="event.message">
+	<div class="col-sm-6 col-sm-offset-2">
+		<div class="alert alert-info">
+			{{ event.message }}
+		</div>
+	</div>
+</div>

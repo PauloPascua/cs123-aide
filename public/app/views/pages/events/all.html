@@ -1,0 +1,58 @@
+<div class="page-header">
+	<h1>
+		Events 
+		<a href="/events/create" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span> 
+			New Event
+		</a>		
+	</h1>
+	<h5> 
+		<form ng-submit="event.search()">
+			Search: &nbsp;
+			<input type="text" ng-model="event.query"> 
+			<button type="submit" class="btn btn-default btn-sm">
+				Submit
+			</button>
+		</form>
+	</h5>
+
+	<div ng-show="event.hasQueried">
+			<p> 
+				Showing results for: {{event.showResults}}
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="javascript:history.go(0)"> show all events </a>
+			</p>
+	</div>
+</div>
+
+<div class="jumbotron text-center" ng-show="event.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading Events...</p>
+</div>
+
+<table class="table table-bordered table-striped" ng-show="event.events">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Owner</th>
+			<th>Description</th>
+			<th>ID </th>
+			<!-- <th class="col-sm-2"></th> -->
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="event in event.events">
+			<td>
+			<a href="/events/{{ event._id }}"> {{ event.name }} </a>
+			</td>
+			<td>{{ event.owner }}</td>
+			<td>{{ event.description }}</td>
+			<td>{{ event._id }}</td>
+			<!-- 
+			<td class="col-sm-2">
+				<a ng-href="/users/{{ person._id }}" class="btn btn-danger">Edit</a>
+				<a href="#" ng-click="user.deleteUser(person._id)" class="btn btn-primary">Delete</a>
+			</td> -->
+		</tr>
+	</tbody>
+</table>

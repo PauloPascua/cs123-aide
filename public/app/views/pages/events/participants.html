@@ -1,0 +1,33 @@
+<div class="page-header">
+	<h3> Participants for {{ event.eventData.name }}: </h3>
+</div>
+
+<table class="table table-bordered table-striped" ng-show="event.participantData">
+	<thead>
+		<tr>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="participant in event.participantData">
+			<td>
+			<a href="/events/{{ event._id }}"> {{ participant.username}} </a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="jumbotron text-center" ng-show="event.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading Participants...</p>
+</div>
+
+<div class="row show-hide-message" ng-show="event.message">
+	<div class="col-sm-6 col-sm-offset-2">
+		
+		<div class="alert alert-info">
+			{{ event.message }}
+		</div>
+
+	</div>
+</div>
